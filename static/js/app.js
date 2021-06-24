@@ -28,15 +28,11 @@ function buildPlot(name) {
         var thisSample = data.samples.filter(sample => sample.id == name);
         thisSample = thisSample[0];
         // Get data for horizontal bar - top 10
-        var sampleValues = thisSample.sample_values.slice(0, 10);
-        var otuIds = thisSample.otu_ids.slice(0, 10);
+        var sampleValues = (thisSample.sample_values.slice(0, 10)).reverse();
+        var otuIds = (thisSample.otu_ids.slice(0, 10)).reverse();
         otuIds = otuIds.map(i => 'OTU ' + i);
         var otuLabels = thisSample.otu_labels.slice(0, 10);
-        console.log(thisSample);
-        console.log(sampleValues);
-        console.log(otuIds);
-        console.log(otuLabels);
-        
+        // Build bar plot
         var data = [{
             x: sampleValues,
             y: otuIds,
