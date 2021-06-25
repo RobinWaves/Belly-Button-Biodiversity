@@ -52,7 +52,7 @@ function buildPlot(name) {
             domain: { x: [0, 1], y: [0, 1] },
             value: value,
             title: { text: '<b>Belly Button Washing Frequency</b><br>Scrubs per Week',
-                    font: { size: 20 }  },
+                    font: { size: 24 }  },
             type: "indicator",
             mode: "gauge+number",
             gauge: {
@@ -76,7 +76,7 @@ function buildPlot(name) {
                 }
             }
         }];
-        var layout = { 
+        var layout = {
             width: 600, 
             height: 450, 
             margin: { 
@@ -94,9 +94,9 @@ function buildInfo(name) {
         console.log(thisMeta);
         // Get reference to html element, remove any existing elements, and append info
         var select = d3.select(".panel-body");
-        d3.selectAll("h5").remove();
+        d3.selectAll("p").remove();
         thisMeta.forEach(meta => {
-            Object.entries(meta).forEach(([key, value]) => select.append("h5").text(`${key}: ${value}`));
+            Object.entries(meta).forEach(([key, value]) => select.append("p").text(`${key}: ${value}`));
         });
     });
 }
