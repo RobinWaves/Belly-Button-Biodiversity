@@ -2,16 +2,21 @@
 // Builds Bar and Bubble Plots
 function buildPlot(name) {
     d3.json("../samples.json").then(data => { 
-        // Get this sample's data
+        // Get this Sample data - for BAR and BUBBLE
         var thisSample = data.samples.filter(sample => sample.id == name);
         thisSample = thisSample[0];
         console.log(thisSample);
-
+        
         var ids = thisSample.otu_ids;
         otuIds = ids.map(i => 'OTU ' + i);
         var values = thisSample.sample_values;
         var labels = thisSample.otu_labels;
         
+        // Get this Metadata - for GAUGE
+        var thisMeta = data.metadata.filter(meta => meta.id == name);
+        var value = thisMeta[0].wfreq;;
+        console.log(`Wfreq: ${value}`)
+
         // Build BAR
         var data = [{
             x: (values.slice(0, 10)).reverse(),
@@ -41,6 +46,44 @@ function buildPlot(name) {
             xaxis: { title: "OTU ID" },
         };
         Plotly.newPlot('bubble', data, layout); 
+
+        // Build GAUGE
+        var data = [{
+            domain: { x: [0, 1], y: [0, 1] },
+            value: value,
+            title: { text: '<b>Belly Button Washing Frequency</b><br>Scrubs per Week',
+                    font: { size: 20 }  },
+            type: "indicator",
+            mode: "gauge+number",
+            gauge: {
+                axis: { range: [null, 9],
+                        tickmode: "linear" },
+                steps: [
+                    { range: [0, 1], color: "#e6ffff" },
+                    { range: [1, 2], color: "#b3ffff" },
+                    { range: [2, 3], color: "#80ffff" },
+                    { range: [3, 4], color: "#4dffff" },
+                    { range: [4, 5], color: "#00e6e6" },
+                    { range: [5, 6], color: "#00b3b3" },
+                    { range: [6, 7], color: "#009999" },
+                    { range: [7, 8], color: "#008080" },
+                    { range: [8, 9], color: "#006666" }
+                ],
+                threshold: {
+                    line: { color: "purple", width: 8 },
+                    thickness: .75,
+                    value: value
+                }
+            }
+        }];
+        var layout = { 
+            width: 600, 
+            height: 450, 
+            margin: { 
+                t: 0, 
+                b: 0 } 
+            };
+        Plotly.newPlot('gauge', data, layout);
     });    
 }    
 //------------------------------------------------------------
