@@ -28,16 +28,18 @@ function buildPlot(name) {
         var thisSample = data.samples.filter(sample => sample.id == name);
         thisSample = thisSample[0];
         console.log(thisSample);
+
+        var ids = thisSample.otu_ids;
+        var values = thisSample.sample_values;
+        var labels = thisSample.otu_labels;
+        
         // Get data for BAR- top 10
-        var sampleValues = (thisSample.sample_values.slice(0, 10)).reverse();
-        var otuIds = (thisSample.otu_ids.slice(0, 10)).reverse();
-        otuIds = otuIds.map(i => 'OTU ' + i);
-        var otuLabels = thisSample.otu_labels.slice(0, 10);
+        otuIds = ids.map(i => 'OTU ' + i);
         // Build bar plot
         var data = [{
-            x: sampleValues,
-            y: otuIds,
-            text: otuLabels,
+            x: (values.slice(0, 10)).reverse(),
+            y: (otuIds.slice(0, 10)).reverse(),
+            text: (labels.slice(0, 10)).reverse(),
             type: 'bar',
             orientation: 'h'
         }];
@@ -47,23 +49,44 @@ function buildPlot(name) {
         Plotly.newPlot('bar', data, layout);
 
         // Build BUBBLE
-        console.log(thisSample.otu_ids);
+        console.log(`OTU IDS: ${thisSample.otu_ids}`);
+        console.log(`Sample Values: ${thisSample.sample_values}`);
+        
         var data = [{
-            x: thisSample.otu_ids,
-            y: thisSample.sample_values,
-            text: thisSample.otu_labels,
+            x: ids,
+            y: values,
+            text: labels,
             mode: 'markers',
-            // marker: {
-            //     size: [40, 60, 80, 100]
-            // }
+            marker: {
+                color: ids,
+                size: values
+            }
         }];
         var layout = {
             title: `Every Sample for ${thisSample.id}`,
-            showlegend: true,
-            height: 600,
-            width: 600
+            xaxis: { title: "OTU ID" },
         };
-        Plotly.newPlot('bubble', data, layout);
+        Plotly.newPlot('bubble', data, layout); 
+            
+        // var data = [{
+        //     x: thisSample.otu_ids,
+        //     y: thisSample.sample_values,
+        //     text: thisSample.otu_labels,
+        //     mode: 'markers',
+        //     marker: {
+        //         color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  
+        //                 'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
+        //         opacity: [1, 0.8, 0.6, 0.4],
+        //         size: [40, 60, 80, 100]
+        //     }
+        // }];
+        // var layout = {
+        //     title: `Every Sample for ${thisSample.id}`,
+        //     showlegend: true,
+        //     height: 600,
+        //     width: 1200
+        // };
+        // Plotly.newPlot('bubble', data, layout);
     });    
 }    
 //------------------------------------------------------------
