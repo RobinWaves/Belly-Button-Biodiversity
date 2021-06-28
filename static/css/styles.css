@@ -43,15 +43,3 @@ h4 {
     font-variant: small-caps;
     font-weight: bold;
 }
-/* for Gauge Plot ?????? 
-@media screen and (min-width: 801px) {
-    div.sign {
-        font-size: 80px;
-    }
-}
-@media screen and (max-width: 800px) {
-    div.sign {
-        font-size: 50px;
-    }
-} */
-

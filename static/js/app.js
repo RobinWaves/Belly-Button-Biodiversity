@@ -5,10 +5,10 @@ function buildPlot(name) {
         // Get this Sample data - for BAR and BUBBLE
         var thisSample = data.samples.filter(sample => sample.id == name);
         thisSample = thisSample[0];
-        console.log(`Test Sample Data: ${thisSample}`);
+        console.log(thisSample);
         
         var ids = thisSample.otu_ids;
-        otuIds = ids.map(i => 'OTU ' + i);
+        otuIds = ids.map(i => 'OTU ' + i +'  ');
         var values = thisSample.sample_values;
         var labels = thisSample.otu_labels;
 
@@ -26,7 +26,8 @@ function buildPlot(name) {
             orientation: 'h'
         }];
         var layout = {
-            title: `Top 10 Bacteria Cultures Found in ${thisSample.id}`,
+            title: `<br><b><span style="font-family:Montserrat">Top 10 Bacteria Cultures</b>`,
+            font: { size: 13 }
         };
         Plotly.newPlot('bar', data, layout);
 
@@ -44,7 +45,8 @@ function buildPlot(name) {
             }
         }];
         var layout = {
-            title: `Bacteria Cultures Per Sample for ${thisSample.id}`,
+            title: `<br><b><span style="font-family:Montserrat">Bacteria Cultures Per Sample</b>`,
+            font: { size: 13 },
             xaxis: { title: "OTU ID" },
         };
         Plotly.newPlot('bubble', data, layout); 
@@ -53,8 +55,8 @@ function buildPlot(name) {
         var data = [{
             domain: { x: [0, 1], y: [0, 1] },
             value: value,
-            title: { text: `<b>Belly Button Washing Frequency</b><br><span style="font-size:0.8em;color:gray">Scrubs per Week</span>`,
-                    font: { size: 24 }  },
+            title: { text: `<b><span style="font-family:Montserrat">Belly Button Washing Frequency</b><br><span style="font-family:Montserrat;font-size:0.8em;color:gray">Scrubs per Week</span>`,
+                    font: { size: 20 }  },
             type: "indicator",
             mode: "gauge+number",
             gauge: {
@@ -79,12 +81,14 @@ function buildPlot(name) {
             }
         }];
         var layout = {
-            width: 600, 
-            height: 450, 
+            width: 500, 
+            height: 400, 
             margin: { 
-                t: 0, 
-                b: 0 } 
-            };
+                t: 125, 
+                l: 0,
+                r: 0 } 
+            }
+            
         Plotly.newPlot('gauge', data, layout);
     });    
 }    
@@ -94,11 +98,7 @@ function buildInfo(name) {
     d3.json("../samples.json").then(data => { 
         var thisMeta = data.metadata.filter(meta => meta.id == name);
         console.log(thisMeta);
-        var metaKeys = Object.keys(thisMeta[0]);
-        console.log(metaKeys);
-        for ( var i = 0; i < metaKeys.length; i++) {
-            metaKeys[i] = metaKeys[i].charAt(0).toUpperCase() + metaKeys[i].slice(1);
-        };
+
         // Get reference to html element, remove any existing elements, and append info
         var select = d3.select(".panel-body");
         d3.selectAll("h4").remove();
