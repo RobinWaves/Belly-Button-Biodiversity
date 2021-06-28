@@ -5,17 +5,17 @@ function buildPlot(name) {
         // Get this Sample data - for BAR and BUBBLE
         var thisSample = data.samples.filter(sample => sample.id == name);
         thisSample = thisSample[0];
-        console.log(thisSample);
+        console.log(`Test Sample Data: ${thisSample}`);
         
         var ids = thisSample.otu_ids;
         otuIds = ids.map(i => 'OTU ' + i);
         var values = thisSample.sample_values;
         var labels = thisSample.otu_labels;
-        
+
         // Get this Metadata - for GAUGE
         var thisMeta = data.metadata.filter(meta => meta.id == name);
-        var value = thisMeta[0].wfreq;;
-        console.log(`Wfreq: ${value}`)
+        var value = thisMeta[0].wfreq;
+        console.log(`Wfreq: ${value}`);
 
         // Build BAR
         var data = [{
@@ -37,8 +37,10 @@ function buildPlot(name) {
             text: labels,
             mode: 'markers',
             marker: {
+                size: values,
                 color: ids,
-                size: values
+                colorscale: "Earth"
+                
             }
         }];
         var layout = {
@@ -92,11 +94,16 @@ function buildInfo(name) {
     d3.json("../samples.json").then(data => { 
         var thisMeta = data.metadata.filter(meta => meta.id == name);
         console.log(thisMeta);
+        var metaKeys = Object.keys(thisMeta[0]);
+        console.log(metaKeys);
+        for ( var i = 0; i < metaKeys.length; i++) {
+            metaKeys[i] = metaKeys[i].charAt(0).toUpperCase() + metaKeys[i].slice(1);
+        };
         // Get reference to html element, remove any existing elements, and append info
         var select = d3.select(".panel-body");
-        d3.selectAll("p").remove();
+        d3.selectAll("h4").remove();
         thisMeta.forEach(meta => {
-            Object.entries(meta).forEach(([key, value]) => select.append("p").text(`${key}: ${value}`));
+            Object.entries(meta).forEach(([key, value]) => select.append("h4").text(`${key}: ${value}`));
         });
     });
 }
@@ -118,7 +125,7 @@ function init() {
 //------------------------------------------------------------
 // Executes when a change takes place to dropdown menu then builds plots and data
 function optionChanged(newName) { 
-    console.log(newName);
+    console.log(`New Test Subject: ${newName}`);
     buildPlot(newName);
     buildInfo(newName);   
 }

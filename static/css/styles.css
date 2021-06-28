@@ -1,0 +1,57 @@
+/* Jumbotron - Top Header Box - Dashboard */
+.jumbotron {
+    background-color: #41B3A3;
+    font-family: 'Concert One';
+}
+/* Use interactive charts */
+.jumbotron p {
+    font-family: 'Montserrat';
+    font-size: 25px;
+    padding-top: 20px;
+}
+/* Test Subject ID Well */
+.well {
+    background-color: #C38D9E;
+    font-family: 'Montserrat';
+    text-align: center;
+}
+/* Well text */
+h5 {
+    font-family: 'Concert One';
+    font-size: 20px;
+}
+/* Demographic Info Container Box */
+.panel-primary>.panel-heading {
+    background-color: #E27D60;
+    color: #000000;
+    border: none;
+    
+}
+.panel-primary {
+    border-color: #E27D60;
+}
+/* Text Inside DI Container Box */
+.panel-title {
+    font-family: 'Concert One';
+    font-size: 20px;
+    text-align: center;  
+}
+/* Metadata inside DI Box */
+h4 {
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+/* for Gauge Plot ?????? 
+@media screen and (min-width: 801px) {
+    div.sign {
+        font-size: 80px;
+    }
+}
+@media screen and (max-width: 800px) {
+    div.sign {
+        font-size: 50px;
+    }
+} */
+
