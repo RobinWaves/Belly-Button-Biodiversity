@@ -51,7 +51,7 @@ function buildPlot(name) {
         var data = [{
             domain: { x: [0, 1], y: [0, 1] },
             value: value,
-            title: { text: '<b>Belly Button Washing Frequency</b><br>Scrubs per Week',
+            title: { text: `<b>Belly Button Washing Frequency</b><br><span style="font-size:0.8em;color:gray">Scrubs per Week</span>`,
                     font: { size: 24 }  },
             type: "indicator",
             mode: "gauge+number",
