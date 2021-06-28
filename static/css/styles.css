@@ -43,3 +43,16 @@ h4 {
     font-variant: small-caps;
     font-weight: bold;
 }
+/* Reset Page */
+.reset {
+    background-color: #92ddc8;
+    font-family: 'Concert One';
+    font-size: 20px;
+    color: #000000;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;    
+    padding-bottom: 5px;
+    text-align: center;
+    cursor: pointer;
+}
