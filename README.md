@@ -52,7 +52,7 @@ The D3 library was used to read in the json data.  A test subject dropdown was c
 
 ---
 
-### **Click this link to visit the Interactive Dashboard:** [http://RobinWaves.github.io/plotly-challenge](http://RobinWave.github.io/plotly-challenge)
+### **Click this link to visit the Interactive Dashboard:** [http://RobinWaves.github.io/plotly-challenge](http://RobinWaves.github.io/plotly-challenge)
 
 - - -
 
