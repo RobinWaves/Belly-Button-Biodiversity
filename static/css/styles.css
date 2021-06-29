@@ -49,6 +49,7 @@ h4 {
     border-radius: px;
     font-family: 'Concert One';
     font-size: 20px;
+    text-align:center;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 5px;    
@@ -56,6 +57,5 @@ h4 {
     margin-left: 12px;
 }
 .reset {
-    text-align:center;
     color: #000000;
 }
