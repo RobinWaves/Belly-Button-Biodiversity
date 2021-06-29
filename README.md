@@ -11,34 +11,40 @@ The D3 library was used to read in the json data.  A test subject dropdown was c
 
 ---
 
-![Bar Chart](images/horizontalBar.png)
-1.  A horizontal bar chart displays the top 10 OTUs found in that individual.  
+1.  A horizontal bar chart displays the top 10 OTUs found in that individual. 
+
     * Sample values are used as the values
     * OTU ids are used as the labels
     * OTU labels are used as the hover text
 
+![Bar Chart](images/horizontalBar.png)
+
 ---
 
-![Bubble Chart](images/bubble.png)
 2. A bubble chart displays each sample for that individual.
+
     * OTU ids are used for the x values
     * Sample values are used for the y values
     * Sample values are used for the marker size
     * OTU ids are used for the marker colors
     * OTU labels are used for the text/hover values
+    
+![Bubble Chart](images/bubble.png)
 
 ---
 
-![Demographic Info](images/metadata.png)
 3. The individual's demographic information (sample metadata) is displayed as available.  Each key, value pair is set forth on the dashboard.
+
+![Demographic Info](images/metadata.png)
 
 ---
 
 ## Advanced Challenge Assignment
 
-![Gauge Chart](images/gauge.png)
 4.  A gauge chart displays the weekly washing frequency of the individual.  The chart is updated whenever a new sample is selected.
     * Value range from 0 - 9
+
+![Gauge Chart](images/gauge.png)
 
 ---
 
