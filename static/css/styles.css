@@ -44,15 +44,16 @@ h4 {
     font-weight: bold;
 }
 /* Reset Page */
-.reset {
+.col-md-10 {
     background-color: #92ddc8;
     font-family: 'Concert One';
     font-size: 20px;
-    color: #000000;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 5px;    
     padding-bottom: 5px;
-    text-align: center;
-    cursor: pointer;
+    margin-left: 12px;
+}
+.reset {
+    color: #000000;
 }
