@@ -1,7 +1,7 @@
 //------------------------------------------------------------
 // Builds Bar and Bubble Plots
 function buildPlot(name) {
-    d3.json("samples.json").then(data => { 
+    d3.json("data/samples.json").then(data => { 
         // Get this Sample data - for BAR and BUBBLE
         var thisSample = data.samples.filter(sample => sample.id == name);
         thisSample = thisSample[0];
@@ -95,7 +95,7 @@ function buildPlot(name) {
 //------------------------------------------------------------
 // Builds data for demographic info
 function buildInfo(name) {
-    d3.json("samples.json").then(data => { 
+    d3.json("data/samples.json").then(data => { 
         var thisMeta = data.metadata.filter(meta => meta.id == name);
         console.log(thisMeta);
 
@@ -111,7 +111,7 @@ function buildInfo(name) {
 // Fills dropdown menu and build inital plots and info
 function init() {
     // Populate dropdown menu with ids
-    d3.json("samples.json").then(data => { 
+    d3.json("data/samples.json").then(data => { 
         var names = data.names;
         // Get reference to dropdown
         var select = d3.select("#selDataset");
